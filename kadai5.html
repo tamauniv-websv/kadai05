@@ -4,35 +4,25 @@
     <meta charset="utf-8">
     <title>createElement, appendChild</title>
     <script type="text/javascript">
-      function createTable()
+
+      function addItem()
       {
-        var node = document.createElement('table');
-        node.id = 'myTable';
-		document.getElementById('tableArea').appendChild(node);
+		  var bookmark = document.getElementById('bookmark');
+		  var row = document.createElement('li');
+		  // 課題：
+		  // row の中に id:linkname のテキストを入れてから
+		  // bookmark に appendChild しなさい。
 
-        var row = document.createElement('tr');
+		  // 発展課題：
+		  // その代わりに、createElement('a') でアンカータグを生成し、
+		  // その innerHTML に id:linkname
+		  // その href オプションに id:href を代入し、target オプションに "_blank" を指定して
+		  // bookmark に appendChild しなさい。
+		  // 生成例：<a href='www.tama.ac.jp' target='_blank'>多摩大学</a>
+		  // （強制的に文字列を生成して、li タグの innerHTML に指定しても動きますが、
+		  // 　いちおう、ちゃんと createElement してみましょう）
+		  // https://www.w3schools.com/jsref/prop_link_href.asp
 
-        var uid = document.createElement('th');
-        uid.innerHTML = 'User ID';
-        row.appendChild( uid );
-        var name = document.createElement('th');
-        name.innerHTML = 'Name';
-        row.appendChild( name );
-
-        node.appendChild( row );
-      }
-
-      function addRow()
-      {
-		  var t = document.getElementById('myTable');
-		  var row = document.createElement('tr');
-		  // row の中を uid, name という ID のエレメントから作っておいて……
-
-		  var uid = document.createElement('td');
-          uid.innerHTML = document.getElementById('uid').value;
-          row.appendChild( uid );
-
-		  t.appendChild(row);
       }
 
     </script>
@@ -40,12 +30,11 @@
   <body>
     <h1>createElement, appendChild</h1>
 <hr />
-    <input type="button" value="Create Table" onclick="createTable()">
-<hr />
-    <input type="button" value="Add Name" onclick="addRow()">
-    <input type="text" id='uid' value="29988777">
-    <input type="text" id='name' value="idehara">
-    <div id='tableArea'></div>
+    <input type="button" value="Add Name" onclick="addItem()">
+    <br />
+    <input type="text" id="linkname" value=""><br />
+	  <input type="text" id="href" value="">
 
+    <ul id='bookmark'></ul>
   </body>
 </html>
